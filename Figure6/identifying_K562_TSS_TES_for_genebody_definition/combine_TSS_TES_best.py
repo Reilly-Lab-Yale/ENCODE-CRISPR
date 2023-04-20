@@ -4,6 +4,8 @@
 ###### Last updated: 04/16/2023#########
 ########################################
 
+extract gene isoform index w/ highest TSS AND TES pol2 signal among all its isoforms. genes with no such isoform are skipped. 
+
 '''
 
 
