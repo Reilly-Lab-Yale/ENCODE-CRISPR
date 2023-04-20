@@ -32,5 +32,5 @@ python combine_TSS_TES_best.py isoform_index_with_K562_pol2_TSS.out isoform_inde
 # for K562 HCRFF covered genes, this method unambiguously provided us the highest confidence gene bodies. 
 
 
-# to generate list of K562 genes w/ their coordinates. Genes with multiple gene coordinates with equally high TSS/TES Pol2 enrichment are duplicated. 
-python3 index_to_TSSfile.py  K562_best_isoform_indices.txt  refGene.txt|uniq > K562_gene_bodies_selected_by_higest_Pol2_TSS_TES.out
+# to generate list of K562 genes w/ their coordinates.  Genes with multiple gene coordinates with equally high TSS/TES Pol2 enrichment are duplicated. 
+python3 index_to_genebody.py  K562_best_isoform_indices.txt  refGene.txt|uniq > K562_gene_bodies_selected_by_higest_Pol2_TSS_TES.out
