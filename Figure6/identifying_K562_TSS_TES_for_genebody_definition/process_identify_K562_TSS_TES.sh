@@ -26,11 +26,10 @@ python extract_genefile_index_for_highest_pol2.py  all_isoform_TES_flank_1kb_Pol
 
 # combining TSS TES pol2 for best isoforms
 python combine_TSS_TES_best.py isoform_index_with_K562_pol2_TSS.out isoform_index_with_K562_pol2_TES.out > K562_best_isoform_indices.txt
-
-
-
-# for K562 HCRFF covered genes, this method unambiguously provided us the highest confidence gene bodies. 
-
-
-# to generate list of K562 genes w/ their coordinates.  Genes with multiple gene coordinates with equally high TSS/TES Pol2 enrichment are duplicated. 
 python3 index_to_genebody.py  K562_best_isoform_indices.txt  refGene.txt|sort|uniq > K562_gene_bodies_selected_by_higest_Pol2_TSS_TES.out
+# for K562 HCRFF covered genes, the above  unambiguously provided us the highest confidence gene bodies. 
+
+
+# not used in the crispr paper -- we can also generate the best isoform list using TSS pol2 signal only. 
+python index_to_TSS.py isoform_index_with_K562_pol2_TSS.out   refGene.txt |sort|uniq > K562_TSS_selected_by_higest_Pol2_TSS.out
+python annotate_with_pol2_signal.py  > K562_TSS_selected_by_higest_Pol2_TSS_sig.out
