@@ -1,7 +1,7 @@
 #!/bin/sh
 ####### Author: Jin Woo Oh  ############
 ###### For CRISPR WG paper  ############
-###### Last updated: 04/16/2023#########
+###### Last updated: 04/23/2023#########
 ########################################
 
 
@@ -33,4 +33,4 @@ python combine_TSS_TES_best.py isoform_index_with_K562_pol2_TSS.out isoform_inde
 
 
 # to generate list of K562 genes w/ their coordinates.  Genes with multiple gene coordinates with equally high TSS/TES Pol2 enrichment are duplicated. 
-python3 index_to_genebody.py  K562_best_isoform_indices.txt  refGene.txt|uniq > K562_gene_bodies_selected_by_higest_Pol2_TSS_TES.out
+python3 index_to_genebody.py  K562_best_isoform_indices.txt  refGene.txt|uniq -d> K562_gene_bodies_selected_by_higest_Pol2_TSS_TES.out
