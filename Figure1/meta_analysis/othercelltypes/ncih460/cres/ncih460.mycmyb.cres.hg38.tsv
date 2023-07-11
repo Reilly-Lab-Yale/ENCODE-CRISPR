@@ -1,0 +1,2 @@
+chrom	chromStart	chromEnd	name	EffectSize	strandPerturbationTarget	PerturbationTargetID	chrTSS	startTSS	endTSS	strandGene	EffectSize95ConfidenceIntervalLow	EffectSize95ConfidenceIntervalHigh	measuredGeneSymbol	measuredEnsemblID	guideSpacerSeq	guideSeq	Significant	pValue	pValueAdjusted	PowerAtEffectSize10	PowerAtEffectSize25	PowerAtEffectSize50	ValidConnection	Notes
+chr8	128551556	128562132	MYC|chr8:128551556-128562132	140.635284	.	MYC|chr8:128551556-128562132	chr8	127735434	127742951	+	NA	NA	MYC	ENSG00000136997	NA	NA	TRUE	NA	NA	NA	NA	NA	TRUE	NA
