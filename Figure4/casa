@@ -1,0 +1,51 @@
+mkdir /n/
+cd /n/
+git clone https://github.com/sjgosai/casa.git
+mkdir -p /n/casa/data/CRISPR_WG_paper/
+mkdir -p /n/casa/data/jam_210611/CRISPR_Guide_File_Format_Data/
+
+
+## Unfiltered sgRNA version
+
+python ../../src/wrap_peak_calling.py CASA__final_tycko_gata1_growth_R1.txt \
+                                   CASA__final_tycko_gata1_growth_R1__allPeaks \
+                                   -b sabeti-encode \
+                                   -g gs://haddath/sgosai/ \
+                                   -ws 100 -ss 100 -z us* -p -j 200
+
+python ../../src/wrap_peak_calling.py CASA__final_tycko_gata1_growth_R2.txt \
+                                   CASA__final_tycko_gata1_growth_R2__allPeaks \
+                                   -b sabeti-encode \
+                                   -g gs://haddath/sgosai/ \
+                                   -ws 100 -ss 100 -z us* -p -j 200
+
+python /n/casa/casa/casa2encode.py CASA__final_tycko_gata1_growth_R1__allPeaks.bed \
+                                   CASA__final_tycko_gata1_growth_R2__allPeaks.bed \
+  --casa_guide_file CASA__final_tycko_gata1_growth_R1.txt \
+  --min_guide_coverage 10 \
+  --chrTSS chrX --startTSS 48786590 --strandGene '+' \
+  --measuredGeneSymbol GATA1 --measuredEnsemblID 'ENSG00000102145.15' \
+  --output_file /n/casa/data/CRISPR_WG_paper/GATA1/CASA__final_tycko_gata1_growth__replicatingPeaks.bed
+
+
+## Filtered sgRNA version
+
+python /n/casa/src/wrap_peak_calling.py /n/casa/data/CRISPR_WG_paper/bassik_crispri_gata1growth.CASA_intermediate.R1.txt \
+                                        /n/casa/data/jam_210611/CRISPR_Guide_File_Format_Data/CASA__filtered_tycko_gata1_growth_R1__allPeaks \
+                                        -b sabeti-encode \
+                                        -g gs://haddath/sgosai/ \
+                                        -ws 100 -ss 100 -z us* -p -j 200
+
+python /n/casa/src/wrap_peak_calling.py /n/casa/data/CRISPR_WG_paper/bassik_crispri_gata1growth.CASA_intermediate.R2.txt \
+                                        /n/casa/data/jam_210611/CRISPR_Guide_File_Format_Data/CASA__filtered_tycko_gata1_growth_R2__allPeaks \
+                                        -b sabeti-encode \
+                                        -g gs://haddath/sgosai/ \
+                                        -ws 100 -ss 100 -z us* -p -j 200
+
+python /n/casa/casa/casa2encode.py /n/casa/data/jam_210611/CRISPR_Guide_File_Format_Data/CASA__filtered_tycko_gata1_growth_R1__allPeaks.bed \
+                                   /n/casa/data/jam_210611/CRISPR_Guide_File_Format_Data/CASA__filtered_tycko_gata1_growth_R2__allPeaks.bed \
+  --min_guide_coverage 5 \ # filtering removed lots of guides, need to compensate
+  --chrTSS chrX --startTSS 48786590 --strandGene + \
+  --measuredGeneSymbol GATA1 --measuredEnsemblID ENST00000376670.9 \
+  --casa_guide_file /n/casa/data/CRISPR_WG_paper/bassik_crispri_gata1growth.CASA_intermediate.R2.txt \
+  --output_file /n/casa/data/CRISPR_WG_paper/GATA1_filtered/CASA__filtered_tycko_gata1_growth__replicatingPeaks.bed
