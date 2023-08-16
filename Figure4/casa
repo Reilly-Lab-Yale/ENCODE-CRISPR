@@ -1,3 +1,5 @@
+
+
 mkdir /n/
 cd /n/
 git clone https://github.com/sjgosai/casa.git
@@ -6,7 +8,8 @@ mkdir -p /n/casa/data/jam_210611/CRISPR_Guide_File_Format_Data/
 
 
 ## Unfiltered sgRNA version
-
+#https://github.com/sjgosai/casa/blob/master/casa/casa2encode.py
+#https://github.com/sjgosai/casa/blob/master/src/wrap_peak_calling.py
 python ../../src/wrap_peak_calling.py CASA__final_tycko_gata1_growth_R1.txt \
                                    CASA__final_tycko_gata1_growth_R1__allPeaks \
                                    -b sabeti-encode \
