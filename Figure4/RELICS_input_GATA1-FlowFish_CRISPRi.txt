@@ -1,0 +1,8 @@
+dataName:doughty_GATA1-FlowFish_CRISPRi
+DataInputFileLoc:doughty_GATA1-FlowFish_CRISPRi.hg38_RELICS.csv
+repl_groups:5,6,7,8,9,10;11,12,13,14,15,16;17,18,19,20,21,22
+min_FS_nr:30
+FS0_label:TSS
+glmm_negativeTraining:negative_control
+crisprSystem:CRISPRi
+out_dir:doughty_GATA1-FlowFish_CRISPRi/
