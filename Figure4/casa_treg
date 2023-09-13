@@ -1,0 +1,37 @@
+python /n/casa/src/wrap_peak_calling.py \
+  /n/casa/analysis/CRISPR_WG/tcell_analysis/220304_TG2_GITR_KRAB__CASA_input__R1.txt \
+  /n/casa/analysis/CRISPR_WG/tcell_analysis/220304_TG2_GITR_KRAB__CASA__R1__allPeaks \
+  -b sabeti-encode \
+  -g gs://haddath/sgosai/ \
+  -ws 200 -ss 200 -z us* -p -j 50
+
+python /n/casa/src/wrap_peak_calling.py \
+  /n/casa/analysis/CRISPR_WG/tcell_analysis/220304_TG2_GITR_KRAB__CASA_input__R2.txt \
+  /n/casa/analysis/CRISPR_WG/tcell_analysis/220304_TG2_GITR_KRAB__CASA__R2__allPeaks \
+  -b sabeti-encode \
+  -g gs://haddath/sgosai/ \
+  -ws 200 -ss 200 -z us* -p -j 50
+
+python /n/casa/src/wrap_peak_calling.py \
+  /n/casa/analysis/CRISPR_WG/tcell_analysis/220304_TG2_GITR_KRAB__CASA_input__R3.txt \
+  /n/casa/analysis/CRISPR_WG/tcell_analysis/220304_TG2_GITR_KRAB__CASA__R3__allPeaks \
+  -b sabeti-encode \
+  -g gs://haddath/sgosai/ \
+  -ws 200 -ss 200 -z us* -p -j 50
+
+python /n/casa/src/wrap_peak_calling.py \
+  /n/casa/analysis/CRISPR_WG/tcell_analysis/220304_TG2_GITR_KRAB__CASA_input__R4.txt \
+  /n/casa/analysis/CRISPR_WG/tcell_analysis/220304_TG2_GITR_KRAB__CASA__R4__allPeaks \
+  -b sabeti-encode \
+  -g gs://haddath/sgosai/ \
+  -ws 200 -ss 200 -z us* -p -j 50
+
+python /n/casa/casa/casa2encode.py \
+  /n/casa/analysis/CRISPR_WG/tcell_analysis/220304_TG2_GITR_KRAB__CASA__R1__allPeaks.bed \
+  /n/casa/analysis/CRISPR_WG/tcell_analysis/220304_TG2_GITR_KRAB__CASA__R2__allPeaks.bed \
+  /n/casa/analysis/CRISPR_WG/tcell_analysis/220304_TG2_GITR_KRAB__CASA__R3__allPeaks.bed \
+  /n/casa/analysis/CRISPR_WG/tcell_analysis/220304_TG2_GITR_KRAB__CASA__R4__allPeaks.bed \
+  --casa_guide_file /n/casa/analysis/CRISPR_WG/tcell_analysis/220304_TG2_GITR_KRAB__CASA_input__R1.txt \
+  --min_guide_coverage 5 \
+  --chrTSS chr4 --startTSS 156110799 --strandGene '+' --measuredGeneSymbol Tnfrsf18 --measuredEnsemblID 'ENSMUST00000040274.12' \
+  --output_file /n/casa/analysis/CRISPR_WG/tcell_analysis/220304_TG2_GITR_KRAB__CASA__replicatingPeaks.bed
